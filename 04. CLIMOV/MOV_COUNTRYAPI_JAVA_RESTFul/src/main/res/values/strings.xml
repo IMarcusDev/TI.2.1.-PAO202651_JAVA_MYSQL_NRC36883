@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CountryAPI</string>
+    <string name="cero">0</string>
+    <string name="sin_dato">—</string>
+
+    <!-- Inicio de sesión -->
+    <string name="login_subtitulo">Consumo de APIs públicas · Inicie sesión para continuar</string>
+    <string name="login_titulo">Iniciar sesión</string>
+    <string name="usuario">Usuario</string>
+    <string name="clave">Clave</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="servidor">Servidor</string>
+    <string name="cambiar_servidor">Cambiar servidor</string>
+    <string name="servidor_ayuda">Emulador: http://10.0.2.2:8080/WS_COUNTRYAPI_JAVA_RESTFul/api · Celular: use la IP del equipo del servidor.</string>
+    <string name="servidor_invalido">Ingrese una dirección que empiece con http:// o https://</string>
+    <string name="servidor_guardado">Servidor actualizado: %1$s</string>
+
+    <!-- Barra superior e indicador -->
+    <string name="menu_principal">Menú principal</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="cerrar_sesion_descripcion">Termina la sesión y vuelve al inicio.</string>
+    <string name="comprobando_servidor">Comprobando el servidor…</string>
+    <string name="servidor_disponible">Servidor disponible</string>
+    <string name="servidor_no_disponible">Servidor no disponible</string>
+    <string name="procesando">Procesando…</string>
+    <string name="bienvenido">Bienvenido, %1$s.</string>
+    <string name="elija_opcion">Elija una opción.</string>
+
+    <!-- Opciones del menú (orden del ECUD1) -->
+    <string name="op_importar">Importar países</string>
+    <string name="op_importar_desc">Trae todos los países desde la API REST Countries.</string>
+    <string name="op_consultar">Consultar país en la API</string>
+    <string name="op_consultar_desc">Busca un país por nombre en la API y guárdelo.</string>
+    <string name="op_paises">Países</string>
+    <string name="op_paises_desc">Lista, registra, edita y elimina los países guardados.</string>
+    <string name="op_buscar">Buscar y filtrar</string>
+    <string name="op_buscar_desc">Busca por nombre, capital y región con filtros dinámicos.</string>
+    <string name="op_reportes">Reportes</string>
+    <string name="op_reportes_desc">Países por región, país más poblado y promedio poblacional.</string>
+    <string name="op_universidades">Universidades</string>
+    <string name="op_universidades_desc">Importa y consulta las universidades de un país.</string>
+
+    <!-- Importar países -->
+    <string name="importar_desc">Trae todos los países de la API REST Countries. Los nuevos se registran y los existentes se actualizan, sin duplicar.</string>
+    <string name="importar_pregunta">¿Importar los países desde la API REST Countries? Los países existentes se actualizarán</string>
+    <string name="importar">Importar</string>
+    <string name="recibidos_api">Recibidos de la API</string>
+    <string name="registrados_nuevos">Registrados (nuevos)</string>
+    <string name="actualizados">Actualizados</string>
+    <string name="importacion_finalizada">Importación finalizada: %1$d países recibidos, %2$d registrados y %3$d actualizados</string>
+
+    <!-- Consultar en la API -->
+    <string name="consultar_desc">Consulta REST Countries por nombre (por ejemplo «ecuador») y guarde el país elegido.</string>
+    <string name="nombre_pais">Nombre del país</string>
+    <string name="consultar">Consultar</string>
+    <string name="guardar">Guardar</string>
+    <string name="guardado_si">Guardado: Sí</string>
+    <string name="guardado_no">Guardado: No</string>
+
+    <!-- Países -->
+    <string name="paises_desc">Países almacenados en la base de datos. Toque un país para editarlo o eliminarlo.</string>
+    <string name="buscar">Buscar</string>
+    <string name="nuevo">Nuevo</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="eliminar_pais">Eliminar país</string>
+    <string name="eliminar_pregunta">¿Eliminar el país %1$s?</string>
+    <string name="nuevo_pais">Nuevo país</string>
+    <string name="datos_pais">Datos del país</string>
+    <string name="campo_nombre">Nombre *</string>
+    <string name="campo_capital">Capital</string>
+    <string name="campo_region">Región *</string>
+    <string name="campo_subregion">Subregión</string>
+    <string name="campo_poblacion">Población *</string>
+    <string name="campo_area">Área (km²)</string>
+    <string name="campo_moneda">Moneda</string>
+    <string name="poblacion">Población</string>
+    <string name="area">Área (km²)</string>
+    <string name="moneda">Moneda</string>
+
+    <!-- Buscar y filtrar -->
+    <string name="buscar_desc">Combine nombre, capital y región. Al elegir una región la lista se actualiza al momento.</string>
+    <string name="nombre">Nombre</string>
+    <string name="capital">Capital</string>
+    <string name="region">Región</string>
+    <string name="todas">Todas</string>
+
+    <!-- Reportes -->
+    <string name="reportes_desc">Estadísticas calculadas sobre los países almacenados.</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="pais_mas_poblado">País más poblado</string>
+    <string name="paises_por_region">Cantidad de países por región</string>
+    <string name="promedio_por_region">Promedio poblacional por región</string>
+    <string name="paises">Países</string>
+    <string name="promedio_poblacion">Promedio de población</string>
+    <string name="habitantes_region">%1$s habitantes · %2$s</string>
+
+    <!-- Universidades -->
+    <string name="universidades_desc">Importa desde la API de universidades las de un país (escrito en inglés) y consulta las guardadas.</string>
+    <string name="pais_ingles">País (en inglés)</string>
+    <string name="ver_guardadas">Ver guardadas</string>
+    <string name="importacion_universidades">Importación de universidades finalizada: %1$d recibidas, %2$d registradas y %3$d actualizadas</string>
+    <string name="dominio_valor">Dominio: %1$s</string>
+    <string name="pais_por_defecto">Ecuador</string>
+
+    <plurals name="total_paises">
+        <item quantity="one">%d país</item>
+        <item quantity="many">%d países</item>
+        <item quantity="other">%d países</item>
+    </plurals>
+    <plurals name="total_encontrados">
+        <item quantity="one">%d país encontrado</item>
+        <item quantity="many">%d países encontrados</item>
+        <item quantity="other">%d países encontrados</item>
+    </plurals>
+    <plurals name="total_universidades">
+        <item quantity="one">%d universidad</item>
+        <item quantity="many">%d universidades</item>
+        <item quantity="other">%d universidades</item>
+    </plurals>
+</resources>

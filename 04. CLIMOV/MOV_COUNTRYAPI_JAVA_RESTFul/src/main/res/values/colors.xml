@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta del diseño de referencia (igual en los cuatro clientes) -->
+    <color name="azul">#1F4E79</color>
+    <color name="azul_oscuro">#183D60</color>
+    <color name="azul_claro">#E8EFF7</color>
+    <color name="fondo">#F3F4F6</color>
+    <color name="texto">#1F2933</color>
+    <color name="texto_suave">#4B5563</color>
+    <color name="borde">#D1D5DB</color>
+    <color name="verde">#22C55E</color>
+    <color name="verde_claro">#E9F9EF</color>
+    <color name="verde_texto">#166534</color>
+    <color name="rojo">#B91C1C</color>
+    <color name="rojo_claro">#FDECEC</color>
+    <color name="blanco">#FFFFFF</color>
+    <color name="texto_sobre_azul">#D6E2EF</color>
+</resources>

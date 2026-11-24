@@ -185,3 +185,21 @@ Decisiones que tomé; ninguna cambia el contrato del servidor.
   - «Bienvenido, <nombre>.» en el menú;
   - en Reportes, cuando no hay países, se agrega «Use «Importar países» para cargarlos.» al mensaje del servidor, como sugiere el ECUD6.
 - **D4. Población o área no numéricas.** El formulario devuelve -1 o NaN y `ValidadorDatos` muestra el mensaje del ECUD («La población debe ser un número entero mayor o igual que cero»). Se aceptan separadores de miles en la población y coma o punto decimal en el área.
+
+## E. Fase 3 (cliente móvil)
+
+Decisiones que tomé; ninguna cambia el contrato del servidor ni los controladores.
+
+- **E1. Mismo modelo, servicios y controladores que el escritorio.** `modelos`, `servicios`, `controlador` y las interfaces de `vista` son copias del cliente Swing. Solo cambia `ClienteRest`, en tres puntos:
+  - usa métodos que existen en Android 7 (minSdk 24);
+  - la dirección del servidor se puede cambiar en caliente (`setUrlBase`);
+  - ya no tiene constructor sin argumentos, porque la URL sale de `ConfigServidor`, que en Android lee las preferencias de la app.
+- **E2. Una sola actividad.** `PrincipalActivity` implementa `MenuVista`, como `VentanaPrincipal` en escritorio, y muestra fragments: inicio de sesión, menú de tarjetas y un fragment por módulo, que implementa su interfaz de vista.
+  - Los controladores corren en un hilo aparte y piden datos a la vista de forma síncrona, igual que en Swing.
+  - Los diálogos (formulario, confirmaciones) bloquean ese hilo hasta que el usuario responde.
+- **E3. Selección en Países.** No hay tabla: al tocar un país se marca y aparece el menú «Editar / Eliminar». En «Consultar país en la API», cada resultado tiene su botón «Guardar».
+- **E4. Dirección del servidor configurable desde la app.**
+  - Por defecto es `http://10.0.2.2:8080/WS_COUNTRYAPI_JAVA_RESTFul/api` (el emulador). Se cambia en `gradle.properties` o en la pantalla de inicio de sesión con «Cambiar servidor».
+  - Mensajes nuevos de esa pantalla: «Ingrese una dirección que empiece con http:// o https://» y «Servidor actualizado: <url>».
+- **E5. Error de validación dentro del formulario.** Cuando el controlador reabre el formulario por un error (validación, 400 o 409), el mensaje aparece arriba del formulario, además de en la pantalla, porque el diálogo la tapa.
+- **E6. Pruebas.** Se reutilizan las 49 pruebas del escritorio. El servidor falso se reescribió con `ServerSocket`, porque las pruebas de Android se compilan contra `android.jar`, que no trae `com.sun.net.httpserver`. Hay 16 pruebas nuevas de `ConfigServidor` y del cambio de servidor.

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- usesCleartextTraffic: el servidor de Payara se publica por http en la red local -->
+    <application
+        android:name=".AplicacionCountryApi"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Tema.CountryApi"
+        android:usesCleartextTraffic="true">
+
+        <!-- Una sola actividad: inicio de sesión, menú y pantallas de cada módulo son fragments.
+             Los cambios de configuración no la recrean, así la sesión y las listas se conservan. -->
+        <activity
+            android:name=".vista.PrincipalActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|uiMode|density|keyboardHidden"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

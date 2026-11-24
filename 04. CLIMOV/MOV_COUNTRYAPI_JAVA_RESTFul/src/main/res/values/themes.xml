@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Tema.CountryApi" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/azul</item>
+        <item name="colorOnPrimary">@color/blanco</item>
+        <item name="colorPrimaryContainer">@color/azul_claro</item>
+        <item name="colorOnPrimaryContainer">@color/azul</item>
+        <item name="colorSecondary">@color/azul</item>
+        <item name="colorSecondaryContainer">@color/azul_claro</item>
+        <item name="colorOnSecondaryContainer">@color/azul</item>
+        <item name="colorSurface">@color/blanco</item>
+        <item name="colorOnSurface">@color/texto</item>
+        <item name="colorOnSurfaceVariant">@color/texto_suave</item>
+        <item name="colorOutline">@color/borde</item>
+        <item name="colorSurfaceContainer">@color/blanco</item>
+        <item name="colorSurfaceContainerLow">@color/blanco</item>
+        <item name="colorSurfaceContainerHigh">@color/blanco</item>
+        <item name="colorError">@color/rojo</item>
+        <item name="android:colorBackground">@color/fondo</item>
+        <item name="android:windowBackground">@color/azul_oscuro</item>
+        <item name="android:textColorPrimary">@color/texto</item>
+        <item name="android:statusBarColor">@color/azul_oscuro</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:navigationBarColor">@color/azul_oscuro</item>
+        <item name="materialAlertDialogTheme">@style/Tema.CountryApi.Dialogo</item>
+        <item name="textInputStyle">@style/Campo</item>
+    </style>
+
+    <style name="Tema.CountryApi.Dialogo" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/azul</item>
+        <item name="colorSurfaceContainerHigh">@color/blanco</item>
+        <item name="textInputStyle">@style/Campo</item>
+    </style>
+</resources>
