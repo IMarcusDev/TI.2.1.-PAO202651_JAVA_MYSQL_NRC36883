@@ -1,0 +1,4 @@
+# Copie este archivo como api.properties (misma carpeta) y ponga su clave de REST Countries v5.
+# La clave se obtiene gratis en https://restcountries.com/api-keys (plan Free: 1000 peticiones al mes).
+# api.properties no se sube a git.
+restcountries.clave=PONGA_AQUI_SU_CLAVE
