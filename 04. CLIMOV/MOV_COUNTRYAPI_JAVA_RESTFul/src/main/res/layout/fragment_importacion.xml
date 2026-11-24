@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/TextoSuave"
+            android:text="@string/importar_desc" />
+
+        <include layout="@layout/aviso" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botonImportar"
+            style="@style/BotonPrimario"
+            android:layout_width="match_parent"
+            android:layout_marginTop="16dp"
+            android:text="@string/op_importar"
+            app:icon="@drawable/ic_importar"
+            app:iconGravity="textStart"
+            app:iconTint="@color/blanco" />
+
+        <!-- Resumen de la última importación -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/cajaRecibidos"
+                layout="@layout/caja_cifra"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/cajaRegistrados"
+                layout="@layout/caja_cifra"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1" />
+
+            <include
+                android:id="@+id/cajaActualizados"
+                layout="@layout/caja_cifra"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

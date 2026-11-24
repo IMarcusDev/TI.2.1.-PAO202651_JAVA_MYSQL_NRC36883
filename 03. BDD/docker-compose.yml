@@ -1,0 +1,56 @@
+# =============================================================
+# Sistema CountryAPI · TI.2.1 · Base de datos MySQL 8 para pruebas
+#
+# Levanta MySQL 8 con la base api_paises ya creada y cargada:
+# al crear el volumen por primera vez, el contenedor ejecuta
+# init.sql y después seed.sql (orden alfabético).
+#
+#   Iniciar:              docker compose up -d
+#   Ver si está lista:    docker compose ps        (estado "healthy")
+#   Consola SQL:          docker compose exec mysql mysql -uroot -p api_paises
+#   Detener:              docker compose down
+#   Reiniciar desde cero: docker compose down -v && docker compose up -d
+#
+# Variables opcionales (en un archivo .env junto a este o en el entorno):
+#   MYSQL_ROOT_PASSWORD  clave de root      (por defecto: root)
+#   MYSQL_PORT           puerto en el host  (por defecto: 3306)
+# =============================================================
+name: countryapi
+
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: countryapi-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      TZ: America/Guayaquil
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    configs:
+      # Sin esto, el cliente mysql que ejecuta los scripts de inicio los lee
+      # como latin1 y las tildes quedan dañadas («AmÃ©rica» en vez de «América»).
+      - source: cliente_utf8mb4
+        target: /etc/mysql/conf.d/cliente-utf8mb4.cnf
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
+      - ./seed.sql:/docker-entrypoint-initdb.d/02_seed.sql:ro
+      - datos_mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -uroot -p\"$$MYSQL_ROOT_PASSWORD\" --silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 20s
+
+configs:
+  cliente_utf8mb4:
+    content: |
+      [client]
+      default-character-set=utf8mb4
+
+volumes:
+  datos_mysql:

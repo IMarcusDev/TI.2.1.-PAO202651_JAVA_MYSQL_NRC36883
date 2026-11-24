@@ -1,0 +1,47 @@
+plugins {
+    id 'com.android.application' version '9.4.0'
+}
+
+// URL base del servidor RESTful que usa la app la primera vez. Se cambia en gradle.properties,
+// con -Pservidor=http://<IP>:8080/WS_COUNTRYAPI_JAVA_RESTFul/api o desde la pantalla de inicio de sesión.
+def servidor = project.findProperty('servidor') ?: 'http://10.0.2.2:8080/WS_COUNTRYAPI_JAVA_RESTFul/api'
+
+android {
+    namespace = 'ec.edu.monster'
+    compileSdk = 36
+
+    defaultConfig {
+        applicationId = 'ec.edu.monster.countryapi'
+        minSdk = 24
+        targetSdk = 36
+        versionCode = 1
+        versionName = '1.0'
+
+        buildConfigField 'String', 'URL_SERVIDOR', "\"${servidor}\""
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    testOptions {
+        unitTests.all {
+            // Pruebas locales con JUnit 5 (controladores y servicios contra un servidor falso).
+            useJUnitPlatform()
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}

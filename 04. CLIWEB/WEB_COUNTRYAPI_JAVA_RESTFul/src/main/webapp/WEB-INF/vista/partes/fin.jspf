@@ -1,0 +1,6 @@
+<%@ page pageEncoding="UTF-8" %>
+<%-- Cierre de cada pantalla con sesión. --%>
+</main>
+<script src="${ctx}/js/countryapi.js"></script>
+</body>
+</html>

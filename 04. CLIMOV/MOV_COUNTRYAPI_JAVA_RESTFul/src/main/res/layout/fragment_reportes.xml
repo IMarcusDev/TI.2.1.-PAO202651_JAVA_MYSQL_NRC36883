@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            style="@style/TextoSuave"
+            android:text="@string/reportes_desc" />
+
+        <include layout="@layout/aviso" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/botonActualizar"
+            style="@style/BotonSecundario"
+            android:layout_width="match_parent"
+            android:layout_marginTop="12dp"
+            android:text="@string/actualizar" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Tarjeta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    style="@style/Subtitulo"
+                    android:text="@string/pais_mas_poblado" />
+
+                <TextView
+                    android:id="@+id/masPoblado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/sin_dato"
+                    android:textColor="@color/azul"
+                    android:textSize="26sp" />
+
+                <TextView
+                    android:id="@+id/poblacionMasPoblado"
+                    style="@style/TextoSuave" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            style="@style/Subtitulo"
+            android:layout_marginTop="20dp"
+            android:text="@string/paises_por_region" />
+
+        <!-- Tablas con encabezado celeste (las llena ReporteFragment) -->
+        <LinearLayout
+            android:id="@+id/tablaConteo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/tabla_fondo"
+            android:orientation="vertical"
+            android:padding="1dp" />
+
+        <TextView
+            style="@style/Subtitulo"
+            android:layout_marginTop="20dp"
+            android:text="@string/promedio_por_region" />
+
+        <LinearLayout
+            android:id="@+id/tablaPromedio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/tabla_fondo"
+            android:orientation="vertical"
+            android:padding="1dp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

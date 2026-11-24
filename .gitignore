@@ -38,5 +38,8 @@ odd/
 # PowerDesigner: copias de respaldo automáticas
 *.oob
 
+# CountryAPI: clave personal de la API REST Countries v5 (la plantilla es api.properties.ejemplo)
+**/src/main/resources/api.properties
+
 # Local test data for the EurekaBank database (personal users and passwords)
 /03. BDD/EurekaBank_MySQL_datos.sql

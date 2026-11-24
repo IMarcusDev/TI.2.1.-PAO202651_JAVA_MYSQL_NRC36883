@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Aviso de la pantalla: verde con mensajes de éxito, rojo con errores (lo pinta FragmentoBase) -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/aviso"
+    style="@style/Aviso"
+    android:layout_marginTop="12dp" />

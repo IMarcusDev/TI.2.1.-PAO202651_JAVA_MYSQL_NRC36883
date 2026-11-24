@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IndicadorServidor">
+        <!-- true: texto blanco (barra azul); false: texto gris (fondo claro) -->
+        <attr name="sobreAzul" format="boolean" />
+    </declare-styleable>
+</resources>

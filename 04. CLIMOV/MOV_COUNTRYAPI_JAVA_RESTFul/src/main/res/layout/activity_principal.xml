@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Barra superior azul: título, usuario, estado del servidor y cerrar sesión.
+             Se oculta en la pantalla de inicio de sesión. -->
+        <LinearLayout
+            android:id="@+id/encabezado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/azul"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/barraSuperior"
+                style="@style/BarraSuperior"
+                app:title="@string/app_name" />
+
+            <ec.edu.monster.vista.IndicadorServidor
+                android:id="@+id/indicadorBarra"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/azul_oscuro"
+                android:paddingStart="16dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="4dp"
+                app:sobreAzul="true" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/fondo">
+
+            <!-- Aquí se muestran el inicio de sesión, el menú y cada módulo -->
+            <FrameLayout
+                android:id="@+id/contenedor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progreso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:contentDescription="@string/procesando"
+                android:indeterminate="true"
+                android:visibility="invisible"
+                app:indicatorColor="@color/verde"
+                app:trackColor="@color/azul_claro" />
+
+            <!-- Capa transparente que impide tocar la pantalla mientras se procesa una petición
+                 (la barra de progreso indica que se está trabajando) -->
+            <View
+                android:id="@+id/bloqueo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:importantForAccessibility="no"
+                android:visibility="invisible" />
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>
