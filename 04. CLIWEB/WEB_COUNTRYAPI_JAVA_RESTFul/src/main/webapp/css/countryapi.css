@@ -339,7 +339,9 @@ button.opcion { width: 100%; font: inherit; text-align: left; cursor: pointer; }
 @media (max-width: 720px) {
     .barra__fila { padding: 10px 14px; }
     .barra__usuario { width: 100%; justify-content: space-between; margin-left: 0; }
-    .navegacion { order: 3; width: 100%; overflow-x: auto; flex-wrap: nowrap; }
+    /* La navegación se desplaza de lado en vez de partir los enlaces en varias líneas. */
+    .navegacion { order: 3; width: 100%; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
+    .navegacion a { white-space: nowrap; }
     .contenido { padding: 18px 14px 40px; }
     .titulo { font-size: 22px; }
     .tabla th, .tabla td { padding: 8px; }
