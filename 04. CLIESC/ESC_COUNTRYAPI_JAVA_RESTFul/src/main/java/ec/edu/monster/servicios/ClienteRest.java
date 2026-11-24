@@ -139,7 +139,7 @@ public class ClienteRest {
             respuesta.setCodigoHttp(codigo);
             return respuesta;
         } catch (JsonParseException e) {
-            LOG.log(Level.WARNING, "JSON no válido del servidor (HTTP " + codigo + ")", e);
+            LOG.warning(() -> "JSON no válido del servidor (HTTP " + codigo + "): " + e.getMessage());
             RespuestaDTO<T> error = RespuestaDTO.error(RESPUESTA_NO_VALIDA);
             error.setCodigoHttp(codigo);
             return error;

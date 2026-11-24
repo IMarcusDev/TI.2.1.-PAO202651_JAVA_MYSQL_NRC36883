@@ -165,3 +165,23 @@ El servidor está implementado según la documentación (v3.1). Hoy responde 502
 - **Mensaje de los listados:** «Consulta realizada correctamente» para `GET /api/Paises` y `GET /api/Universidades`. El ECUD no fija un mensaje para el listado; es un texto nuevo que la versión .NET tendría que copiar.
 - **JSON del contrato REST:** lo escribe y lee JSON-B, que viene con Payara. Gson se usa solo para el JSON de las APIs públicas, como dicen el ERS y el RNF-002.
 - **Payara local:** para que Payara 7 arranque en este equipo, Hazelcast de `domain1` busca solo `127.0.0.1:4900`. Antes chocaba con TightVNC en el puerto 5900. La copia original está en `domain.xml.bak-antes-countryapi`.
+
+## D. Fase 2 (cliente de escritorio)
+
+Decisiones que tomé; ninguna cambia el contrato del servidor.
+
+- **D1. Las vistas del diagrama son interfaces.**
+  - `VistaBase`, `LoginVista`, `MenuVista`, `PaisVista`, `BusquedaVista`, `ConsultaApiVista`, `ImportacionVista`, `ReporteVista` y `UniversidadVista` conservan sus nombres y métodos.
+  - Los paneles Swing las implementan, y la consola, la web y Android tendrán su propia implementación. Así los controladores se prueban sin pantalla.
+  - Agregué los métodos mínimos que exige una interfaz gráfica:
+    - `PaisVista.leerPais(Pais inicial)`, para editar con los datos actuales;
+    - `PaisVista.paisSeleccionado()`, para saber qué fila eligió el usuario.
+- **D2. Controladores y vistas (B3 aplicado).**
+  - `ApiControlador` tiene las dos vistas que dependen de él: consulta e importación.
+  - `LoginControlador` recibe además `MenuVista`, para abrir el menú después del inicio de sesión.
+  - `PaisControlador` recibe además `BusquedaVista`.
+- **D3. Mensajes nuevos del cliente**, que no están en el ECUD:
+  - «Seleccione un país de la tabla», al editar, eliminar o guardar sin elegir una fila;
+  - «Bienvenido, <nombre>.» en el menú;
+  - en Reportes, cuando no hay países, se agrega «Use «Importar países» para cargarlos.» al mensaje del servidor, como sugiere el ECUD6.
+- **D4. Población o área no numéricas.** El formulario devuelve -1 o NaN y `ValidadorDatos` muestra el mensaje del ECUD («La población debe ser un número entero mayor o igual que cero»). Se aceptan separadores de miles en la población y coma o punto decimal en el área.
