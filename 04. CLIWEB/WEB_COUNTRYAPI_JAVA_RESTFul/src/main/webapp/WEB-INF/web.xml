@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Cliente web de CountryAPI (Jakarta EE 10 / Servlet 6.0). Los servlets y filtros se
+     registran con anotaciones (@WebServlet, @WebFilter, @WebListener). -->
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+
+    <display-name>WEB_COUNTRYAPI_JAVA_RESTFul</display-name>
+
+    <!-- Formularios y páginas en UTF-8 (tildes y ñ) -->
+    <request-character-encoding>UTF-8</request-character-encoding>
+    <response-character-encoding>UTF-8</response-character-encoding>
+
+    <!-- La sesión HTTP dura lo mismo que el token del servidor (15 minutos sin uso).
+         El id de sesión va solo en una cookie HttpOnly, nunca en la URL. -->
+    <session-config>
+        <session-timeout>15</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Errores del contenedor con el diseño de la aplicación -->
+    <error-page>
+        <error-code>403</error-code>
+        <location>/WEB-INF/vista/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/vista/error.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/vista/error.jsp</location>
+    </error-page>
+</web-app>

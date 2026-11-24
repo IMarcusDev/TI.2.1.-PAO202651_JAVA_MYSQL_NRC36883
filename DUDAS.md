@@ -224,4 +224,29 @@ Decisiones que tomé; ninguna cambia el contrato del servidor ni los controlador
 
   El programa también termina si se acaba la entrada (Ctrl+Z / Ctrl+D).
 - **F6. Colores.** Solo en terminales que entienden ANSI; el texto es idéntico sin ellos y los errores siempre llevan «ERROR:».
-- **F7. Tabla completa después de guardar.** Igual que en escritorio, después de registrar, editar o eliminar se vuelve a mostrar la tabla completa (254 filas con la base importada). Si prefieres que en consola solo se muestre el mensaje, es un cambio pequeño en `PaisConsola`.
+- **F7. Tabla completa después de guardar.** Igual que en escritorio, después de registrar, editar o eliminar se vuelve a mostrar la tabla completa (254 filas con la base importada). Aceptado así el 23/11/2026.
+
+## G. Fase 5 (cliente web)
+
+Decisiones que tomé; ninguna cambia el contrato del servidor ni los controladores.
+
+- **G1. Mismo código que el escritorio.** `modelos`, `servicios`, `controlador`, `config` y las interfaces de `vista` son copias sin cambios del cliente Swing. Las vistas web (`LoginVistaWeb`, `PaisVistaWeb`, ...) implementan esas interfaces.
+- **G2. Controladores por usuario.**
+  - Cada `HttpSession` guarda su `SesionServicio` (con el token), sus vistas y sus controladores (`ModulosSesion`).
+  - En cada petición, las vistas se enlazan con ella mientras el controlador trabaja.
+  - Así `ApiControlador` recuerda la última consulta y «Guardar» no gasta otra consulta a REST Countries.
+- **G3. Formulario y confirmaciones sin JavaScript.**
+  - El formulario de país se muestra en la misma página (`?nuevo`, `?editar=ID`). Si hay error de validación, 400 o 409, se vuelve a mostrar con lo escrito y el mensaje.
+  - Eliminar e importar muestran un panel de confirmación con un botón que envía `confirmado=si`.
+- **G4. POST/Redirect/GET.** Después de una operación exitosa se redirige y el aviso viaja guardado en la sesión, para que recargar la página no repita la operación. La excepción es la búsqueda en la API: es un GET y recargarla vuelve a consultar.
+- **G5. Seguridad.**
+  - Se agregó `CsrfFilter`, igual al de la referencia, además del `AuthFilter` que pide el prompt.
+  - Al iniciar sesión se cambia el id de sesión.
+  - La sesión HTTP dura 15 minutos, como el token.
+  - Los enlaces a sitios web de universidades solo se crean si empiezan con http(s).
+- **G6. Textos nuevos de la web**, que no están en el ECUD:
+  - en la página de error: «La solicitud no es válida o la página caducó. Vuelva a intentarlo desde el menú.» (403) y «La página no existe.» (404);
+  - el contador «N resultados» en la consulta a la API.
+
+  El resto son los textos del escritorio.
+- **G7. Dirección del servidor.** `servidor.properties` va dentro del war. Para cambiar la IP sin recompilar se usa la propiedad de sistema `countryapi.config` de Payara, la misma que en escritorio y consola.

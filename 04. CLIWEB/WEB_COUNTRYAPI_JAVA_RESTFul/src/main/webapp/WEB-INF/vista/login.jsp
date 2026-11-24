@@ -1,0 +1,52 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%-- Inicio de sesión (ECUD1). Sin validación del navegador: los mensajes son los del ECUD. --%>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iniciar sesión · CountryAPI</title>
+    <link rel="stylesheet" href="${ctx}/css/countryapi.css">
+    <link rel="icon" href="${ctx}/css/globo.svg" type="image/svg+xml">
+</head>
+<body>
+<div class="login-cabecera">
+    <div class="login-cabecera__interior">
+        <span class="marca__logo" aria-hidden="true" style="width:56px;height:56px;border-radius:14px">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="#fff"><path d="M12,2C6.48,2 2,6.48 2,12s4.48,10 10,10 10,-4.48 10,-10S17.52,2 12,2zM11,19.93c-3.95,-0.49 -7,-3.85 -7,-7.93 0,-0.62 0.08,-1.21 0.21,-1.79L9,15v1c0,1.1 0.9,2 2,2v1.93zM17.9,17.39c-0.26,-0.81 -1,-1.39 -1.9,-1.39h-1v-3c0,-0.55 -0.45,-1 -1,-1H8v-2h2c0.55,0 1,-0.45 1,-1V7h2c1.1,0 2,-0.9 2,-2v-0.41c2.93,1.19 5,4.06 5,7.41 0,2.08 -0.8,3.97 -2.1,5.39z"/></svg>
+        </span>
+        <h1>CountryAPI</h1>
+        <p>Consumo de APIs públicas · Inicie sesión para continuar</p>
+    </div>
+</div>
+<main class="login-tarjeta">
+    <div class="tarjeta">
+        <h2 class="tarjeta__titulo">Iniciar sesión</h2>
+        <%@ include file="partes/avisos.jspf" %>
+        <form method="post" action="${ctx}/login" novalidate>
+            <%@ include file="partes/csrf.jspf" %>
+            <div class="campo">
+                <label for="usuario">Usuario</label>
+                <input id="usuario" name="usuario" autocomplete="username" autofocus
+                       value="<c:out value='${param.usuario}'/>">
+            </div>
+            <div class="campo">
+                <label for="clave">Clave</label>
+                <input id="clave" name="clave" type="password" autocomplete="current-password">
+            </div>
+            <button class="btn" type="submit">Ingresar</button>
+        </form>
+    </div>
+    <p class="login-servidor">
+        <span class="indicador" data-indicador="${ctx}/estado" role="status">
+            <span class="indicador__punto" aria-hidden="true"></span>
+            <span class="indicador__texto">Comprobando el servidor...</span>
+        </span>
+        <br>Servidor: <c:out value="${applicationScope.clienteRest.urlBase}"/>
+    </p>
+</main>
+<script src="${ctx}/js/countryapi.js"></script>
+</body>
+</html>
