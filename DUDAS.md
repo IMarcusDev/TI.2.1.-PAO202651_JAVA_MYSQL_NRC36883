@@ -203,3 +203,25 @@ Decisiones que tomé; ninguna cambia el contrato del servidor ni los controlador
   - Mensajes nuevos de esa pantalla: «Ingrese una dirección que empiece con http:// o https://» y «Servidor actualizado: <url>».
 - **E5. Error de validación dentro del formulario.** Cuando el controlador reabre el formulario por un error (validación, 400 o 409), el mensaje aparece arriba del formulario, además de en la pantalla, porque el diálogo la tapa.
 - **E6. Pruebas.** Se reutilizan las 49 pruebas del escritorio. El servidor falso se reescribió con `ServerSocket`, porque las pruebas de Android se compilan contra `android.jar`, que no trae `com.sun.net.httpserver`. Hay 16 pruebas nuevas de `ConfigServidor` y del cambio de servidor.
+
+## F. Fase 4 (cliente de consola)
+
+Decisiones que tomé; ninguna cambia el contrato del servidor ni los controladores.
+
+- **F1. Mismo código que el escritorio.** `modelos`, `servicios`, `controlador`, `config` y las interfaces de `vista` son copias sin ningún cambio del cliente Swing. Las pantallas de texto (`LoginConsola`, `PaisConsola`, ...) implementan esas interfaces.
+- **F2. Navegación.**
+  - El menú principal está numerado del 1 al 7, en el orden del ECUD1, con «Cerrar sesión» como 7.
+  - Países y Universidades tienen su propio submenú con «0. Volver».
+  - Buscar y Consultar en la API preguntan «¿Hacer otra búsqueda?» / «¿Consultar otro país?».
+- **F3. Cómo se elige un país.** En Países se escribe el **ID** de la tabla; en la consulta a la API, el **N°** del resultado.
+- **F4. Formulario por campos.**
+  - `Enter` conserva el valor entre corchetes y `-` deja vacío un campo opcional.
+  - Al final pregunta «¿Guardar los datos? (S/N)»; responder N equivale a «Cancelar».
+- **F5. Textos nuevos de la consola**, que no están en el ECUD:
+  - «Opción no válida»;
+  - «Escriba 0 como usuario para salir»;
+  - «Hasta luego.».
+
+  El programa también termina si se acaba la entrada (Ctrl+Z / Ctrl+D).
+- **F6. Colores.** Solo en terminales que entienden ANSI; el texto es idéntico sin ellos y los errores siempre llevan «ERROR:».
+- **F7. Tabla completa después de guardar.** Igual que en escritorio, después de registrar, editar o eliminar se vuelve a mostrar la tabla completa (254 filas con la base importada). Si prefieres que en consola solo se muestre el mensaje, es un cambio pequeño en `PaisConsola`.
